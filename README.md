@@ -2,6 +2,6 @@
 
 ## To run
 ```sh
-mkdir db data
+mkdir ~/db data
 docker-compose up
 ```
