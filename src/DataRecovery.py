@@ -24,9 +24,9 @@ class DataRecovery():
     def _init_(self):
         pass
   
-      def get_stem(self, word):
+    def get_stem(self, word):
         return self.stemmer.stem(word.lower())
-      def __save_in_file_aux(self, local_map, path):
+    def __save_in_file_aux(self, local_map, path):
         local_map_keys = local_map.keys()
         local_map_keys = sorted(local_map_keys)
         with open(path, 'w', encoding="utf-8") as file_aux_out:
@@ -36,7 +36,7 @@ class DataRecovery():
                 file_aux_out.write("\n")
             file_aux_out.close()
             
-      def __save_in_file_norm(self, frecuency_map, id):
+    def __save_in_file_norm(self, frecuency_map, id):
         with open(path_norm_doc, 'a', encoding="utf-8") as file_norm_out:
             id_sum = 0
             for key in frecuency_map:
@@ -48,7 +48,7 @@ class DataRecovery():
             file_norm_out.close()
 
   
-     def load(self):
+    def load(self):
         open(path_file_data, 'w').close()
         open(path_norm_doc, 'w').close()
         local_map = {}
