@@ -1,3 +1,6 @@
+from numpy import sqrt, square
+from nltk.stem.snowball import SnowballStemmer
+
 def process_word(word):
     letras = "abcdefghijklmnopqrstuvwxyzñáéíóú"
     new_word = ""
