@@ -118,3 +118,5 @@ class DataRecovery():
                                     str(id_file_aux) + path_file_aux_end)
         print(str(id_file_aux) +
               " archivos auxiliares generados. Generando archivo único")
+
+
