@@ -1,7 +1,7 @@
 import json, os
 import pandas as pd
 import csv
-
+import ijson
 
 jsonPath = "/home/luischahua/data/arxiv-metadata-oai-snapshot.json"
 dirPath = "/home/luischahua/data/arxiv"
