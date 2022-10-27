@@ -28,7 +28,7 @@ services:
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=mydb
     command: >
-      bash -c "python main.py"
+      bash -c "pip install ijson && python splitArxiv.py"
     networks:
       - my-net
 
