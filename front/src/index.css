@@ -1,0 +1,128 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(240, 240, 240);
+}
+
+.App {
+  margin: 10px 20px;
+  height: calc(100vh - 30px);
+  max-width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searcher-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.searcher-text-input {
+  height: 100px;
+}
+
+.searcher-topk-input {
+  margin-top: 10px;
+  width: calc(100px);
+  margin-right: 5px;
+}
+
+.papa {
+  display: flex;
+  flex-direction: column;
+}
+
+.papa > h2 {
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+.resulters-cont {
+  margin-top: 15px;
+  display: flex;
+  height: calc(100vh - 36px - 21px - 106px - 30px);
+}
+
+.separator {
+  margin-left: 2vw;
+}
+
+.results-cont {
+  height: calc(100vh - 36px - 21px - 106px - 30px - 70px);
+  background-color: rgba(248, 248, 248, 0.8);
+  outline: 1px solid darkgray;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow: overlay;
+}
+
+.titles-cont {
+  display: flex;
+}
+
+.elems-cont {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  overflow: overlay;
+}
+
+.title-title, .title-abstract, .title-score {
+  width: calc(9vw - 1px);
+  border-right: 1px solid darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  font-weight: bold;
+  background-color: rgba(177, 177, 177, 0.315);
+}
+
+.title-score {
+  border: none;
+}
+
+.empty {
+  width: calc(7vw);
+  background-color: rgba(172, 172, 172, 0.153);
+  height: 39px;
+  border-bottom: 1px solid darkgray;
+  border-right: 1px solid darkgray;
+}
+
+.lidiv-cont {
+  display: flex;
+  border-bottom: 1px solid darkgray;
+}
+
+.lidiv-cont-last {
+  display: flex;
+}
+
+.paper-title, .paper-num, .paper-abstract, .paper-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid darkgray;
+  height: 50px;
+  width: calc(9vw - 1px);
+  background-color: white;
+}
+
+.paper-score {
+  border-right: none;
+}
+
+.paper-num {
+  justify-content: left;
+  background-color: rgba(172, 172, 172, 0.153);
+  font-weight: bold;
+  width: calc(7vw);
+  text-indent: 15px;
+
+}
