@@ -78,7 +78,7 @@ def TopK_answer(text, k):
             dict1['score'] = row['score']
             ans_all.append(dict1)
 
-        response = { "ans_all": ans_all, "total_time": total_time } 
+        response = { "data": ans_all, "time": total_time } 
 
     return response
 
