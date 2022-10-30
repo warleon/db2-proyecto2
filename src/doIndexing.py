@@ -1,2 +1,11 @@
+from invertedIndex import InvertedIndex
 
-#TODO index the dataset to be able to query it in the api
+def doIndexing():
+	dirpath = "/data/index/"
+	datapath = "/data/arxiv/"
+	index = InvertedIndex(dirpath)
+	index.index(datapath)
+
+if __name__ == "__main__":
+	doIndexing()
+	print("indexed arxiv directory")

@@ -151,7 +151,7 @@ class DataRecovery():
                                 local_map[tweet_word_root] = {tweet_id: 1}
                                 size_of_local_map = size_of_local_map + \
                                     len(str(tweet_id)) + 1 + \
-                                    len(tweet_word_root) + 8
+                                     len(tweet_word_root) + 8
                             if size_of_local_map > MAX_TERMS_IN_MAP:
                                 self.__save_in_file_aux(
                                     local_map, path_file_aux + str(id_file_aux) + path_file_aux_end)

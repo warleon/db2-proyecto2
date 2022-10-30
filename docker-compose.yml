@@ -28,7 +28,7 @@ services:
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=mydb
     command: >
-      bash -c "pip install ijson && python splitArxiv.py"
+      bash -c "pip install nltk && pip install numpy && python doIndexing.py"
     networks:
       - my-net
 
