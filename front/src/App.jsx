@@ -18,6 +18,7 @@ function App() {
       },
       body: JSON.stringify(q)
     })
+    .then(data =>{console.log(data)})
     .then(response => response.json())
     .then(data => setDatapy(data));
 
@@ -29,6 +30,7 @@ function App() {
       },
       body: JSON.stringify(q)
     })
+    .then(data =>{console.log(data)})
     .then(response => response.json())
     .then(data => setDatapo(data));
   }

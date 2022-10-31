@@ -125,7 +125,6 @@ class InvertedIndex:
 					#check if the word was already indxed
 					if not os.path.exists(wpath):
 						continue
-					print(wpath)
 					wfile = open(wpath,"r")
 					wjson=json.load(wfile)
 					res[w]=self.tf_idf(wjson,doc)
@@ -149,12 +148,15 @@ class InvertedIndex:
 		scores = []
 		for doc in docs:
 			curr = self.docVector(doc)
+			docfile = open(doc,"r")
+			content = docfile.read()
+			docfile.close()
 			Qtfidf = {}
 			for w in q:
 				Qtfidf[w]=self.tf_idf(wjson,doc)
-			scores.append((self.cosine_sim(Qtfidf,curr),doc))
+			scores.append({"score":self.cosine_sim(Qtfidf,curr),"title":doc,"abstract":content})
 		
-		return sorted(scores,reverse=True)[:k]
+		return sorted(scores, key=lambda k: k['score'] )[:k]
 
 
 			
