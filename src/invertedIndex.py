@@ -36,9 +36,9 @@ class InvertedIndex:
 	def processText(self,text):
 		res = []
 		for word in re.split(self.stoplist,text):
-			if word in self.stopWords:
-				continue
-			res.append(self.processWord(word))
+			subw = self.processWord(word)
+			if not subw in self.stopWords and len(subw)>1:
+				res.append(subw)
 		return res
 
 		
@@ -89,7 +89,8 @@ class InvertedIndex:
 	
 	#word being a dictionary with the tf and df and doc being a document path/filename
 	def tf_idf(self, word,doc):
-		return np.log(1+word["termfreq"][doc])*np.log(self.N/len(word["termfreq"]))
+		tf =word["termfreq"][doc] if (doc in word["termfreq"]) else np.finfo(float).eps
+		return np.log(1+tf)*np.log(self.N/len(word["termfreq"]))
 
 	#Q and doc being dictionaries of word:tfidf
 	def cosine_sim(self, Q, Doc):
