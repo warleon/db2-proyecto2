@@ -16,7 +16,7 @@ def separateArxiv():
 	id,abstract = "",""
 	count=0
 	for prefix, event, value in parser:
-		if event=="map_key" and value == "id":
+		if event=="map_key" and value == "title":
 			p,e,v = next(parser)
 			id = v
 		elif (event=="map_key" and value == "abstract"):

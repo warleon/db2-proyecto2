@@ -76,10 +76,7 @@ class InvertedIndex:
 				uwpath=os.path.join(self.indexDir,uw)
 				uwfile = open(uwpath, "r") 
 				uwjson = json.load(uwfile)
-				if "docfreq" in uwjson:
-					uwjson["docfreq"] += 1
-				else:
-					uwjson["docfreq"] = 1
+				
 				uwfile.close()
 				uwfile = open(uwpath, "w") 
 				json.dump(uwjson,uwfile)
@@ -92,7 +89,7 @@ class InvertedIndex:
 	
 	#word being a dictionary with the tf and df and doc being a document path/filename
 	def tf_idf(self, word,doc):
-		return np.log(1+word["termfreq"][doc])*np.log(self.N/word["docfreq"])
+		return np.log(1+word["termfreq"][doc])*np.log(self.N/len(word["termfreq"]))
 
 	#Q and doc being dictionaries of word:tfidf
 	def cosine_sim(self, Q, Doc):
