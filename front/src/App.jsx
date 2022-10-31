@@ -21,9 +21,14 @@ function App() {
     .then(response => {
       console.log(response) 
       return response.json()})
-    .then(data => setDatapy(data));
+    .then(data => {
+      const i = data.items.map((item) => {
+        return {...item, abstract: item.abstract.split(' ')[2], score: item.score.toFixed(5)}
+      })
+      setDatapy({...data, items: i})
+    })
 
-/*     fetch('/api/query_postgres' , {
+    fetch('/api/query_postgres' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -33,9 +38,13 @@ function App() {
     })
     .then(response => {
       console.log(response) 
-      console.log(response.json())
       return response.json()})
-    .then(data => setDatapo(data)); */
+    .then(data => {
+      const i = data.items.map((item) => {
+        return {...item, abstract: item.abstract.split(' ')[2], score: item.score.toFixed(5)}
+      })
+      setDatapo({...data, items: i})
+    })
   }
 
   return (

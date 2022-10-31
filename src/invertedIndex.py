@@ -154,7 +154,7 @@ class InvertedIndex:
 			Qtfidf = {}
 			for w in q:
 				Qtfidf[w]=self.tf_idf(wjson,doc)
-			scores.append({"score":self.cosine_sim(Qtfidf,curr),"title":doc,"abstract":content})
+			scores.append({"score":self.cosine_sim(Qtfidf,curr),"title":os.path.basename(doc),"abstract":content})
 		
 		return sorted(scores, key=lambda k: k['score'] )[:k]
 

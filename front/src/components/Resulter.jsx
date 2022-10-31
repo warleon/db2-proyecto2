@@ -37,7 +37,7 @@ const Resulter = (props) => {
                     {anselems}
                 </div>
             </div>
-            <p>Time: {props.data.time} s</p>
+            <p>Time: {props.data.time.toFixed(6)} s</p>
         </div>
     )
 }

@@ -62,7 +62,7 @@ def TopK_answer(text, k):
         ans_all = []
         start = time.time()
         data = connection.execute(sa.sql.text(f""" 
-            select abstract,ts_rank_cd(content_ts, query_ts) as score
+            select id,abstract,ts_rank_cd(content_ts, query_ts) as score
             from papers, to_tsquery('english', '{text}') query_ts
             where query_ts @@ content_ts
             order by score desc 
@@ -74,9 +74,10 @@ def TopK_answer(text, k):
             dict1 = {}
             dict1['abstract'] = row['abstract']
             dict1['score'] = row['score']
+            dict1['title'] = row['id']
             ans_all.append(dict1)
 
-        response = { "data": ans_all, "time": total_time } 
+        response = { "items": ans_all, "time": total_time } 
 
     return response
 
