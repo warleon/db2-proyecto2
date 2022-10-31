@@ -18,11 +18,12 @@ function App() {
       },
       body: JSON.stringify(q)
     })
-    .then(data =>{console.log(data)})
-    .then(response => response.json())
+    .then(response => {
+      console.log(response) 
+      return response.json()})
     .then(data => setDatapy(data));
 
-    fetch('/api/query_postgres' , {
+/*     fetch('/api/query_postgres' , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -30,9 +31,11 @@ function App() {
       },
       body: JSON.stringify(q)
     })
-    .then(data =>{console.log(data)})
-    .then(response => response.json())
-    .then(data => setDatapo(data));
+    .then(response => {
+      console.log(response) 
+      console.log(response.json())
+      return response.json()})
+    .then(data => setDatapo(data)); */
   }
 
   return (
