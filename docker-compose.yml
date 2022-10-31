@@ -6,6 +6,7 @@ services:
       - "5432:5432"
     volumes:
       - "~/db:/var/lib/postgresql/data"
+      - ./data:/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mysecretpassword
@@ -13,10 +14,10 @@ services:
     networks:
       - my-net
 
-  web:
-    image: python:3.8
+  back:
+    build: ./src/
     ports:
-      - "80:8000"
+      - "8000:8000"
     working_dir: /project
     depends_on:
       - db
@@ -28,9 +29,18 @@ services:
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=mydb
     command: >
-      bash -c "pip install nltk && pip install numpy && python doIndexing.py"
+      bash -c "python api.py"
     networks:
       - my-net
+
+  front:
+    build: ./front/
+    ports:
+      - "5173:5173"
+    networks:
+      - my-net
+    command: >
+      bash -c "npx vite --host"
 
 networks:
   my-net:

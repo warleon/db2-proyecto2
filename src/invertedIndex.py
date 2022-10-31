@@ -119,18 +119,21 @@ class InvertedIndex:
 		with open(doc,"r") as dfile:
 			for line in dfile:
 				for w in self.processText(line):
+					if not len(w):
+						continue
 					wpath=os.path.join(self.indexDir,w)
 					#check if the word was already indxed
 					if not os.path.exists(wpath):
 						continue
+					print(wpath)
 					wfile = open(wpath,"r")
-					res[w]=json.load(wfile)
+					wjson=json.load(wfile)
+					res[w]=self.tf_idf(wjson,doc)
 					wfile.close()
 		return res
 
-	def query(self,text):
+	def query(self,text,k):
 		q = self.processText(text)
-		Qtfidf = {}
 		docs =set()
 		for w in q:
 			wpath=os.path.join(self.indexDir,w)
@@ -139,7 +142,6 @@ class InvertedIndex:
 			wfile = open(wpath, 'r')
 			wjson = json.load(wfile)
 		#build query tf idf
-			Qtfidf[w]=wjson
 		# retrieve all relevant documents
 			docs.update(wjson["termfreq"].keys())
 			wfile.close()
@@ -147,9 +149,12 @@ class InvertedIndex:
 		scores = []
 		for doc in docs:
 			curr = self.docVector(doc)
+			Qtfidf = {}
+			for w in q:
+				Qtfidf[w]=self.tf_idf(wjson,doc)
 			scores.append((self.cosine_sim(Qtfidf,curr),doc))
 		
-		return sorted(scores,reverse=True)
+		return sorted(scores,reverse=True)[:k]
 
 
 			

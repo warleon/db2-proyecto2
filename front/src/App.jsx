@@ -7,7 +7,7 @@ import data from "./data"
 function App() {
 
   const [datapy, setDatapy] = useState({items:[], time:0})
-  const [datapo, setDatapo] = useState([""])
+  const [datapo, setDatapo] = useState({items:[], time:0})
 
   const submitQuery = (q) => {
     fetch('/api/query' , {
@@ -20,6 +20,17 @@ function App() {
     })
     .then(response => response.json())
     .then(data => setDatapy(data));
+
+    fetch('/api/query_postgres' , {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*' 
+      },
+      body: JSON.stringify(q)
+    })
+    .then(response => response.json())
+    .then(data => setDatapo(data));
   }
 
   return (
@@ -28,7 +39,7 @@ function App() {
       <div className='resulters-cont'>
         <Resulter title="Top K - Python" data={datapy}/>
         <div className='separator'></div>
-        <Resulter title="Top K - PostgreSQL" data={data}/>
+        <Resulter title="Top K - PostgreSQL" data={datapo}/>
       </div>
     </div>
   )
