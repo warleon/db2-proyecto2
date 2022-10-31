@@ -50,6 +50,8 @@ Se implementa un backend con ayuda de Flask, y se implementan las funciones deta
 
 Dentro del frontend se hizo uso las tecnologías de React, CSS y JavaScript para facilitar la interacción del usuario al momento de realizar las búsquedas, por lo que se buscó asemejar la vista como una ventana de los motores de búsqueda actuales. En la parte superior de la vista te permite introducir la query, en la parte inferior a ello te permite introducir el top k, el cual es permitido hacer mediante un bottom de submit. Luego de submitear el top k te muestra los topk de python por la parte izquierda y por la parte derecha te muestra los topk de postgresSQL con un time en la parte inferior de cada uno de ellos. 
 
+<img src="src/topk.jpeg" width="350">
+
 ### **REACT y CSS**
 Sirvió como estructura principal de las páginas para darles forma y hacer la ventana principal donde se ingresan la búsquedas como los resultados de la query.
 
