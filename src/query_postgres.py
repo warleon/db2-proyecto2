@@ -4,7 +4,27 @@ import time
 import json, os
 import pandas as pd
 import csv
+import re
+from nltk.stem.snowball import SnowballStemmer
+
 # Reading credentials
+
+def processWord(word):
+        return SnowballStemmer('english').stem(word.lower())
+    
+def processText(text):
+    res = []
+
+    stoplist = r"[\W+\d+_]"
+    
+    stopWords = set(["the","of"])
+
+    for word in re.split(stoplist,text):
+        subw = processWord(word)
+        if not subw in stopWords and len(subw)>1:
+            res.append(subw)
+    
+    return list(set(res))
 
 db_user = "postgres" ## poner el user del docker
 db_pass = "mysecretpassword"  ## poner el password del docker
@@ -58,6 +78,8 @@ with engine.connect().execution_options(autocommit=True) as connection:
 
 
 def TopK_answer(text, k):
+    text = processText(text)
+    text = " | ".join(text)
     with engine.connect().execution_options(autocommit=True) as connection:
         ans_all = []
         start = time.time()
