@@ -4,12 +4,25 @@ from flask import request
 from flask import jsonify
 import query_postgres
 from invertedIndex import InvertedIndex
+from cosine import *
 
 dirpath = "/data/index/"
 index = InvertedIndex(dirpath)
 
 app = Flask(__name__)
 
+#query opt
+@app.route("/query", methods=['POST'])
+def query_opt():
+    text = request.json["text"]
+    k = request.json["topk"]
+    start = time.time()
+    ranking = search(text,int(k))
+    end = time.time()
+    return jsonify({"items":ranking,"time":end - start})
+
+
+"""
 @app.route("/query", methods=['POST'])
 def query():
     text = request.json["text"]
@@ -18,7 +31,7 @@ def query():
     ranking = index.query(text,int(k))
     end = time.time()
     return jsonify({"items":ranking,"time":end - start})
-
+"""
 @app.route("/query_postgres", methods=['POST'])
 def postgres_request():
     text = request.json["text"]

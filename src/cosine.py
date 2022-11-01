@@ -39,9 +39,8 @@ def processText(text):
 def search(query, k):
         global dic_frecuency
         query = processText(query)
-        start = time.time()
         query_length = 0
-        directory = "../data/index/"
+        directory = "/data/index/"
         score_doc = {}
         dic_doc_len = {}
         for term in query:
@@ -69,7 +68,6 @@ def search(query, k):
                         
 
         for doc in score_doc:
-
                 score_doc[doc] = score_doc[doc]/((dic_doc_len[doc]**(1/2))*(query_length**(1/2)))
         ans = dict(sorted(score_doc.items(), key=lambda item: item[1]))
         ans_all = []
@@ -80,8 +78,5 @@ def search(query, k):
                 ans_all.append({"title": doc, "score": ans[doc], "abstract": content})
 
         dic_frecuency = {}
-        end = time.time()
         return ans_all
         
-
-print(search("involution to evaluate the",2))
