@@ -75,7 +75,7 @@ def search(query, k):
         for doc in list(reversed(list(ans)))[0:k]:
                 docfile = open(doc,"r")
                 content = docfile.read()
-                ans_all.append({"title": doc, "score": ans[doc], "abstract": content})
+                ans_all.append({"title": os.path.basename(doc), "score": ans[doc], "abstract": content})
 
         dic_frecuency = {}
         return ans_all
