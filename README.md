@@ -5,10 +5,10 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/UTEC.jpg" width="200">
 
 ## **Integrantes**
-* Angeles Barazorda, JeanPier
-* Aguilar, Anthony
-* Chahua, Luis
-* Rubio, Ignacio
+* Angeles Barazorda, JeanPier 60%
+* Aguilar, Anthony 100%
+* Chahua, Luis 100%
+* Rubio, Ignacio 100%
 
 
 ## **Tabla de contenido**

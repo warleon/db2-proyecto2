@@ -1,8 +1,8 @@
 from invertedIndex import InvertedIndex
 
 def doIndexing():
-	dirpath = "/home/luischahua/data/index/"
-	datapath = "/home/luischahua/data/arxiv/"
+	dirpath = "/data/index/"
+	datapath = "/data/arxiv/"
 	index = InvertedIndex(dirpath)
 	index.index(datapath)
 
