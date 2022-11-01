@@ -23,9 +23,9 @@ function App() {
       return response.json()})
     .then(data => {
       const i = data.items.map((item) => {
-        const title = item.title.split(' ')
         const abs = item.abstract.split(' ')
-        return {...item, title: `${title[2]} ${title[3]}`, abstract: `${abs[2]} ${abs[3]}`, score: item.score.toFixed(5)}
+        return {...item, abstract: `${abs[1]} ${abs[2]} ${abs[3]}`, score: item.score.toFixed(5)}
+
       })
       setDatapy({...data, items: i})
     })
@@ -43,9 +43,8 @@ function App() {
       return response.json()})
     .then(data => {
       const i = data.items.map((item) => {
-        const title = item.title.split(' ')
         const abs = item.abstract.split(' ')
-        return {...item, title: `${title[2]} ${title[3]}`, abstract: `${abs[2]} ${abs[3]}`, score: item.score.toFixed(5)}
+        return {...item, abstract: `${abs[1]} ${abs[2]} ${abs[3]}`, score: item.score.toFixed(5)}
       })
       setDatapo({...data, items: i})
     })

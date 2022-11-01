@@ -112,6 +112,8 @@ body {
   height: 50px;
   width: calc(9vw - 1px);
   background-color: white;
+  overflow-x: auto;
+  text-indent: 5px;
 }
 
 .paper-score {

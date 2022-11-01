@@ -3,9 +3,9 @@
 const data = {
     items: [
         {
-            title: "Lo bueno",
-            abstract: "xdxd",
-            score: 0.423            
+            title: "Lo malo",
+            abstract: "adcadc",
+            score: 0.325     
         },
         {
             title: "Lo malo",
