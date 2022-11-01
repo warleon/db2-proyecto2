@@ -36,9 +36,9 @@ class InvertedIndex:
 	def processText(self,text):
 		res = []
 		for word in re.split(self.stoplist,text):
-			if word in self.stopWords:
-				continue
-			res.append(self.processWord(word))
+			subw = self.processWord(word)
+			if not subw in self.stopWords and len(subw)>1:
+				res.append(subw)
 		return res
 
 		
@@ -76,10 +76,7 @@ class InvertedIndex:
 				uwpath=os.path.join(self.indexDir,uw)
 				uwfile = open(uwpath, "r") 
 				uwjson = json.load(uwfile)
-				if "docfreq" in uwjson:
-					uwjson["docfreq"] += 1
-				else:
-					uwjson["docfreq"] = 1
+				
 				uwfile.close()
 				uwfile = open(uwpath, "w") 
 				json.dump(uwjson,uwfile)
@@ -92,7 +89,8 @@ class InvertedIndex:
 	
 	#word being a dictionary with the tf and df and doc being a document path/filename
 	def tf_idf(self, word,doc):
-		return np.log(1+word["termfreq"][doc])*np.log(self.N/word["docfreq"])
+		tf =word["termfreq"][doc] if (doc in word["termfreq"]) else np.finfo(float).eps
+		return np.log(1+tf)*np.log(self.N/len(word["termfreq"]))
 
 	#Q and doc being dictionaries of word:tfidf
 	def cosine_sim(self, Q, Doc):
@@ -119,18 +117,20 @@ class InvertedIndex:
 		with open(doc,"r") as dfile:
 			for line in dfile:
 				for w in self.processText(line):
+					if not len(w):
+						continue
 					wpath=os.path.join(self.indexDir,w)
 					#check if the word was already indxed
 					if not os.path.exists(wpath):
 						continue
 					wfile = open(wpath,"r")
-					res[w]=json.load(wfile)
+					wjson=json.load(wfile)
+					res[w]=self.tf_idf(wjson,doc)
 					wfile.close()
 		return res
 
-	def query(self,text):
+	def query(self,text,k):
 		q = self.processText(text)
-		Qtfidf = {}
 		docs =set()
 		for w in q:
 			wpath=os.path.join(self.indexDir,w)
@@ -139,7 +139,6 @@ class InvertedIndex:
 			wfile = open(wpath, 'r')
 			wjson = json.load(wfile)
 		#build query tf idf
-			Qtfidf[w]=wjson
 		# retrieve all relevant documents
 			docs.update(wjson["termfreq"].keys())
 			wfile.close()
@@ -147,9 +146,15 @@ class InvertedIndex:
 		scores = []
 		for doc in docs:
 			curr = self.docVector(doc)
-			scores.append((self.cosine_sim(Qtfidf,curr),doc))
+			docfile = open(doc,"r")
+			content = docfile.read()
+			docfile.close()
+			Qtfidf = {}
+			for w in q:
+				Qtfidf[w]=self.tf_idf(wjson,doc)
+			scores.append({"score":self.cosine_sim(Qtfidf,curr),"title":os.path.basename(doc),"abstract":content})
 		
-		return sorted(scores,reverse=True)
+		return sorted(scores, key=lambda k: k['score'] )[:k]
 
 
 			

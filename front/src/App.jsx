@@ -7,7 +7,7 @@ import data from "./data"
 function App() {
 
   const [datapy, setDatapy] = useState({items:[], time:0})
-  const [datapo, setDatapo] = useState([""])
+  const [datapo, setDatapo] = useState({items:[], time:0})
 
   const submitQuery = (q) => {
     fetch('/api/query' , {
@@ -18,8 +18,33 @@ function App() {
       },
       body: JSON.stringify(q)
     })
-    .then(response => response.json())
-    .then(data => setDatapy(data));
+    .then(response => {
+      console.log(response) 
+      return response.json()})
+    .then(data => {
+      const i = data.items.map((item) => {
+        return {...item, abstract: item.abstract.split(' ')[2], score: item.score.toFixed(5)}
+      })
+      setDatapy({...data, items: i})
+    })
+
+    fetch('/api/query_postgres' , {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*' 
+      },
+      body: JSON.stringify(q)
+    })
+    .then(response => {
+      console.log(response) 
+      return response.json()})
+    .then(data => {
+      const i = data.items.map((item) => {
+        return {...item, abstract: item.abstract.split(' ')[2], score: item.score.toFixed(5)}
+      })
+      setDatapo({...data, items: i})
+    })
   }
 
   return (
@@ -28,7 +53,7 @@ function App() {
       <div className='resulters-cont'>
         <Resulter title="Top K - Python" data={datapy}/>
         <div className='separator'></div>
-        <Resulter title="Top K - PostgreSQL" data={data}/>
+        <Resulter title="Top K - PostgreSQL" data={datapo}/>
       </div>
     </div>
   )

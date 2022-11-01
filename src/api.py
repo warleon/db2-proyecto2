@@ -1,19 +1,30 @@
+import time
 from flask import Flask
 from flask import request
 from flask import jsonify
 import query_postgres
-#todo set the index to the implementation of InvertedIndex
-index = None
+from invertedIndex import InvertedIndex
+
+dirpath = "/data/index/"
+index = InvertedIndex(dirpath)
 
 app = Flask(__name__)
 
-@app.route("/query")
+@app.route("/query", methods=['POST'])
 def query():
-    text = request.form['query']
-    ranking = index.processQuery(text)
-    return jsonify(ranking)
+    text = request.json["text"]
+    k = request.json["topk"]
+    start = time.time()
+    ranking = index.query(text,int(k))
+    end = time.time()
+    return jsonify({"items":ranking,"time":end - start})
 
-@app.route("/query_postgres/<query>/<k>", methods=['GET'])
-def postgres_request(query, k):
-    response = jsonify(query_postgres.TopK_answer(query, int(k)))
+@app.route("/query_postgres", methods=['POST'])
+def postgres_request():
+    text = request.json["text"]
+    k = request.json["topk"]
+    response = jsonify(query_postgres.TopK_answer(text, int(k)))
     return response
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=8000, debug=True)

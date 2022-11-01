@@ -6,16 +6,16 @@ import pandas as pd
 import csv
 # Reading credentials
 
-db_user = "postgres" 
-db_pass = "mysecretpassword"  
-dirPath = "/home/luischahua/data/arxiv"  ## poner el directorio donde estan los abstracts
+db_user = "postgres" ## poner el user del docker
+db_pass = "mysecretpassword"  ## poner el password del docker
+dirPath = "/data/arxiv"  ## poner el directorio donde estan los abstracts
 
 ## colocar (id,abstract) en un csv
-dirCSV ='/home/luischahua/papers_arxiv.csv'
+dirCSV ='/data/papers_arxiv.csv'
 
 
 
-uri = f'postgresql://{db_user}:{db_pass}@localhost:5432/noticias'
+uri = f'postgresql://{db_user}:{db_pass}@db:5432/noticias'
 
 engine = sa.create_engine(uri)
 
@@ -42,7 +42,6 @@ with engine.connect().execution_options(autocommit=True) as connection:
             DELIMITER ','
             CSV HEADER;
     """))
-    print(data)
 
     data = connection.execute(sa.sql.text("""
             update papers
@@ -57,7 +56,6 @@ with engine.connect().execution_options(autocommit=True) as connection:
     """))
 
 
-    print(data)
 
 def TopK_answer(text, k):
     with engine.connect().execution_options(autocommit=True) as connection:
@@ -79,8 +77,7 @@ def TopK_answer(text, k):
             dict1['title'] = row['id']
             ans_all.append(dict1)
 
-        response = {  "data": ans_all, "time": total_time } 
+        response = { "items": ans_all, "time": total_time } 
 
     return response
 
-print(TopK_answer("paper",6))
