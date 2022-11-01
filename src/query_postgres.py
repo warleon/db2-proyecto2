@@ -91,11 +91,14 @@ def TopK_answer(text, k):
             limit {k};
         """))
         end = time.time()
-        total_time = round(end - start, 8)       
+        total_time = round(end - start, 8)
+        ma = -1
+        for row in data:
+            ma = max(ma,row['score'])  
         for row in data:
             dict1 = {}
             dict1['abstract'] = row['abstract']
-            dict1['score'] = row['score']
+            dict1['score'] = row['score']/ma
             dict1['title'] = row['id']
             ans_all.append(dict1)
 

@@ -45,13 +45,9 @@ class InvertedIndex:
 
 	def addDocument(self,docPath):
 		self.N+=1
-		uniqWords = set()
 		with open(docPath, "r") as doc:
 			for line in doc:
 				for pword in self.processText(line):
-					if not len(pword):
-						continue
-					uniqWords.add(pword)
 					wpath=os.path.join(self.indexDir,pword)
 					winfo = None
 					data = {}
@@ -63,7 +59,7 @@ class InvertedIndex:
 						winfo=open(wpath, "w")
 						data["termfreq"] = {}
 					#count the tf and df
-					if docPath in data:
+					if docPath in data["termfreq"]:
 						data["termfreq"][docPath] += 1
 					else:
 						data["termfreq"][docPath] = 1
@@ -72,15 +68,7 @@ class InvertedIndex:
 					winfo = open(wpath, "w") 
 					json.dump(data,winfo)
 					winfo.close()
-			for uw in uniqWords:
-				uwpath=os.path.join(self.indexDir,uw)
-				uwfile = open(uwpath, "r") 
-				uwjson = json.load(uwfile)
-				
-				uwfile.close()
-				uwfile = open(uwpath, "w") 
-				json.dump(uwjson,uwfile)
-				uwfile.close()
+			
 
 	def index(self,dirpath):
 		for root, dirs, files in os.walk(dirpath):

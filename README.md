@@ -5,10 +5,10 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/UTEC.jpg" width="200">
 
 ## **Integrantes**
-* Angeles Barazorda, JeanPier
-* Aguilar, Anthony
-* Chahua, Luis
-* Rubio, Ignacio
+* Angeles Barazorda, JeanPier 60%
+* Aguilar, Anthony 100%
+* Chahua, Luis 100%
+* Rubio, Ignacio 100%
 
 
 ## **Tabla de contenido**
@@ -48,7 +48,7 @@ Se implementa un backend con ayuda de Flask, y se implementan las funciones deta
 
 ## **Frontend**
 
-Dentro del frontend se hizo uso las tecnologías de React, CSS y JavaScript para facilitar la interacción del usuario al momento de realizar las búsquedas, por lo que se buscó asemejar la vista como una ventana de los motores de búsqueda actuales. En la parte superior de la vista te permite introducir la query, en la parte inferior a ello te permite introducir el top k, el cual es permitido hacer mediante un bottom de submit. Luego de submitear el top k te muestra los topk de python por la parte izquierda y por la parte derecha te muestra los topk de postgresSQL con un time en la parte inferior de cada uno de ellos. 
+Dentro del frontend se hizo uso las tecnologías de React, CSS y JavaScript para facilitar la interacción del usuario al momento de realizar las búsquedas, por lo que se buscó asemejar la vista como una ventana de los motores de búsqueda actuales. En la parte superior de la vista te permite introducir la query, en la parte inferior a ello te permite introducir el top k. Después de llenar ambos campos se clickea el botón submit para mandar la información al api. Luego de mandar los datos, se muestran los topk de python por la parte izquierda y por la parte derecha te muestra los topk de postgresSQL con un time en la parte inferior de cada uno de ellos.
 
 <img src="src/topk.jpg" width="350">
 

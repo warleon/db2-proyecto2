@@ -16,12 +16,12 @@ def separateArxiv():
 	id,abstract = "",""
 	count=0
 	for prefix, event, value in parser:
-		if event=="map_key" and value == "title":
+		if event=="map_key" and value == "id":
 			p,e,v = next(parser)
 			id = v
 		elif (event=="map_key" and value == "abstract"):
 			p,e,v = next(parser)
-			abstract = v
+			abstract = v.strip()
 		
 		if len(id) and len(abstract):
 			path = os.path.join(dirPath,id)
