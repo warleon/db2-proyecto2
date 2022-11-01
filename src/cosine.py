@@ -1,87 +1,87 @@
 import os
 import math
-
+import json
 import nltk
-
+import time
 from collections import Counter
-
+import re
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 
-stemmer = SnowballStemmer('english')
+dic_frecuency = {}
 
-def process(texto):
-    #re.sub('[^A-Za-z0-9]+', ' ', texto )
-  # tokenizar
-    palabras = nltk.word_tokenize(texto.lower())
-  # crear el stoplis
-    stoplist = []
-    stoplist = stopwords.words('english')
-    stoplist += [',', '!', '.', '?', '-', ';','"','¿',')','(','[',']']
+
+N = 10000
+
+def processWord(word):
+        return SnowballStemmer('english').stem(word.lower())
     
-    palabras_limpias = []
-    for token in palabras:
-       if token not in stoplist:
-           palabras_limpias.append(token)
+def processText(text):
+    res = []
 
-    stemmer = SnowballStemmer('english')
-    for i in range(len(palabras_limpias)):
-        palabras_limpias[i] = stemmer.stem(palabras_limpias[i])
+    stoplist = r"[\W+\d+_]"
     
-    return Counter(palabras_limpias)
+    stopWords = set(["the","of"])
 
-N = 50_000
+    for word in re.split(stoplist,text):
+        subw = processWord(word)
+        if not subw in stopWords and len(subw)>1:
+            res.append(subw)
 
-def search(Q, k):
-        query = process(Q)
-
+    for i in res:
+        if not i in dic_frecuency:
+            dic_frecuency[i]=1
+        else:
+            dic_frecuency[i]+=1
+    
+    return list(set(res))
+    
+def search(query, k):
+        global dic_frecuency
+        query = processText(query)
+        start = time.time()
         query_length = 0
-        directory = "../indexes/"
+        directory = "../data/index/"
         score_doc = {}
         dic_doc_len = {}
         for term in query:
-                
-                path = directory + term + ".txt"
-                ##print(path)
-                #print("estaaaaaa")
+                path = directory + term
                 if not os.path.isfile(path):
-                        pass
+                    pass
 
                 file = open(path)
-                df = len(open(path).readlines())
-                w = math.log10(1 + query[term]) * math.log10(1 + N /df)
+                ijson = json.load(file)
+                df = len(ijson["termfreq"])
+                w = math.log10(1 + dic_frecuency[term]) * math.log10(1 + N /df)
                 query_length += w*w
-                cnt=0
-                score_doc_1 = {}
-                
-                i=0
-                for line in file.readlines():
-                        cnt+=1
-                        line = line.split(",")
+                for line in ijson["termfreq"]:
+                        tf = int(ijson["termfreq"][line])
 
-                        document = line[0]
-                        tf = line[1]
-                        title = line[2:]
-                        title = ''.join(title).rstrip()
                         wd = math.log10(1 + int(tf))
 
-                        if not title in dic_doc_len:
-                           dic_doc_len[title] = 0
-                        dic_doc_len[title] += wd*wd
-                        if not title in score_doc:
-                                score_doc[title] = 0
+                        if not line in dic_doc_len:
+                           dic_doc_len[line] = 0
+                        dic_doc_len[line] += wd*wd
+                        if not line in score_doc:
+                                score_doc[line] = 0
                         
-                        score_doc[title] += wd*w
+                        score_doc[line] += wd*w
                         
 
         for doc in score_doc:
 
                 score_doc[doc] = score_doc[doc]/((dic_doc_len[doc]**(1/2))*(query_length**(1/2)))
         ans = dict(sorted(score_doc.items(), key=lambda item: item[1]))
-
-        v = []
+        ans_all = []
+    
         for doc in list(reversed(list(ans)))[0:k]:
-                v.append({"title": doc, "score": ans[doc]})
+                docfile = open(doc,"r")
+                content = docfile.read()
+                ans_all.append({"title": doc, "score": ans[doc], "abstract": content})
 
+        dic_frecuency = {}
+        end = time.time()
+        return ans_all
         
-        return {"data": v}
+
+print(search("involution to evaluate the",2))
