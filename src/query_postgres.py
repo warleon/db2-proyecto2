@@ -93,14 +93,18 @@ def TopK_answer(text, k):
         end = time.time()
         total_time = round(end - start, 8)
         ma = -1
-        for row in data:
-            ma = max(ma,row['score'])  
+
+   
         for row in data:
             dict1 = {}
             dict1['abstract'] = row['abstract']
-            dict1['score'] = row['score']/ma
+            dict1['score'] = row['score']
+            ma = max(ma,row['score'])
             dict1['title'] = row['id']
             ans_all.append(dict1)
+        
+        for i in range(len(ans_all)):
+            ans_all[i]['score']/=ma
 
         response = { "items": ans_all, "time": total_time } 
 
