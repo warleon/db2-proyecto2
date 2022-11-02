@@ -1,5 +1,4 @@
 from invertedIndex import InvertedIndex
-
 def doIndexing():
 	dirpath = "/data/index/"
 	datapath = "/data/arxiv/"
