@@ -5,10 +5,27 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/UTEC.jpg" width="200">
 
 ## **Integrantes**
-* Angeles Barazorda, JeanPier 55%
-* Aguilar, Anthony 100%
-* Chahua, Luis 100%
-* Rubio, Ignacio 100%
+|Integrante|Actividad|
+|-|-|
+|Rubio, Ignacio||
+||Frontend|
+||Evaluacion|
+|Chahua, Luis|
+||Postgresql|
+||Similiud coseno|
+||Informe|
+|Angeles, JeanPier||
+||Informe|
+|| Experimentacion|
+||Intentos fallidos|
+|Aguilar, Anthony||
+||Informe|
+||Backend|
+||Preprocessamiento|
+||Fragmentacion del dataset|
+||Indexacion|
+||Dockerizacion|
+||Presentacion|
 
 
 ## **Tabla de contenido**
