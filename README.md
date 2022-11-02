@@ -73,12 +73,12 @@ docker-compose up
 <img src="imgs/test3result.JPG" width="350">  
 
 ## Experimentaciòn
-<img src="imgs/n100.JPG" width="350"> 
-<img src="imgs/grafican100.JPG" width="350"> 
-<img src="imgs/n500.JPG" width="350"> 
-<img src="imgs/grafican500.JPG" width="350"> 
-<img src="imgs/n1000.JPG" width="350"> 
-<img src="imgs/grafican1000.JPG" width="350"> 
+<img src="imgs/n100.jpg" width="350"> 
+<img src="imgs/grafican100.jpg" width="350"> 
+<img src="imgs/n500.jpg" width="350"> 
+<img src="imgs/grafican500.jpg" width="350"> 
+<img src="imgs/n1000.jpg" width="350"> 
+<img src="imgs/grafican1000.jpg" width="350"> 
 # **Presentación**
 Link de la presentaciòn:
 
