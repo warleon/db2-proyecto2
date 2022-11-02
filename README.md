@@ -74,7 +74,7 @@ docker-compose up
 
 ## Experimentaciòn
 <img src="imgs/n100.jpg" width="350"> 
-<img src="imgs/grafican100.jpg" width="350"> 
+<img src="imgs/grifican100.jpg" width="350"> 
 <img src="imgs/n500.jpg" width="350"> 
 <img src="imgs/grafican500.jpg" width="350"> 
 <img src="imgs/n1000.jpg" width="350"> 
