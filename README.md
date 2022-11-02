@@ -48,7 +48,6 @@ Se implementa un backend con ayuda de Flask, y se exponen 2 endpoints "/query" p
 
 Dentro del frontend se hizo uso las tecnologías de React, CSS y JavaScript para facilitar la interacción del usuario al momento de realizar las búsquedas, por lo que se buscó asemejar la vista como una ventana de los motores de búsqueda actuales. En la parte superior de la vista te permite introducir la query, en la parte inferior a ello te permite introducir el top k. Después de llenar ambos campos se clickea el botón submit para mandar la información al api. Luego de mandar los datos, se muestran los topk de python por la parte izquierda y por la parte derecha te muestra los topk de postgresSQL con un tiempo de consulta en la parte inferior de cada uno de ellos.
 
-<img src="imgs/topk.jpg" width="350">
 
 ## To run
 ```sh
