@@ -103,8 +103,8 @@ def TopK_answer(text, k):
             dict1['title'] = row['id']
             ans_all.append(dict1)
         
-        for i in range(len(ans_all)):
-            ans_all[i]['score']/=ma
+        # for i in range(len(ans_all)):
+        #     ans_all[i]['score']/=ma
 
         response = { "items": ans_all, "time": total_time } 
 
