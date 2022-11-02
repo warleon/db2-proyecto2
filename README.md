@@ -59,11 +59,15 @@ docker-compose up
 ## Tested with
 
 [arxiv dataset](https://www.kaggle.com/datasets/Cornell-University/arxiv)
-
+### Test 1
 <img src="imgs/test1data.JPG" width="350">  <br/>
 <img src="imgs/test1result.JPG" width="350">  
+
+### Test 2
 <img src="imgs/test2data.JPG" width="350">  
 <img src="imgs/test2result.JPG" width="350">  
+
+### Test 3
 <img src="imgs/test3data.JPG" width="350">  
 <img src="imgs/test3result.JPG" width="350">  
 
