@@ -33,27 +33,24 @@ Para ello, implementamos en la parte del backend un ìndice invertido, lo cual n
 # **Técnicas a usar**
 
 ## **Índice invertido**
-Es un método para estructurar cierta información para que sea luego recuperada a través de un motor de búsqueda. Se compone de documentos, los cuales tienen términos a una determinada frecuencia. La información de estos documentos es procesada y organizada para devolver información de una forma óptima. La consulta a realizar es otro conjunto de términos, la cual se procesa y se genera un score en base a su similitud con los documentos organizados por el índice invertido. Finalmente, la estructura debe devolver los documentos más relevantes ordenados de acuerdo al score calculado para cada uno de ellos.
+Esta estructura de datos mapea palabras o terminos a un conjunto de archivos o documentos en los cuales estos terminos aparecen. Adicionalemente almacena el numero de veces que aparece en cada documento.
 
 # **Implementación**
 ## **Información**
-La data recopilada corresponde a una colección de aproximadamente ... capturados a través ....
+La data recopilada corresponde al dataset de Arxiv el cual fue procesado y separado en multiples archivos a indexar
 
 ## **InvertedIndex**
-Es una clase que contiene todas las funciones necesarias para procesar los textos capturados. En ello se tiene en cuenta una funciòn query, las cuales son las consultas que se recibe para luego retornar una lista ordenada de documentos que se aproximen a la consulta
+Es una clase que contiene la implementacion de un Índice invertido y nos permite indexar archivos o documentos e incluso carptetas o directiorios completos
 
 
 ## **Backend**
-Se implementa un backend con ayuda de Flask, y se implementan las funciones detalladas dentro del índice invertido para posterior a ello retornar la lista ordenada de los topk de documentos mas aproximada al query.
+Se implementa un backend con ayuda de Flask, y se exponen 2 endpoints "/query" para consultar a nuestra implementacion y "/query_postgres" para consultar la implementacion de postgres
 
 ## **Frontend**
 
-Dentro del frontend se hizo uso las tecnologías de React, CSS y JavaScript para facilitar la interacción del usuario al momento de realizar las búsquedas, por lo que se buscó asemejar la vista como una ventana de los motores de búsqueda actuales. En la parte superior de la vista te permite introducir la query, en la parte inferior a ello te permite introducir el top k. Después de llenar ambos campos se clickea el botón submit para mandar la información al api. Luego de mandar los datos, se muestran los topk de python por la parte izquierda y por la parte derecha te muestra los topk de postgresSQL con un time en la parte inferior de cada uno de ellos.
+Dentro del frontend se hizo uso las tecnologías de React, CSS y JavaScript para facilitar la interacción del usuario al momento de realizar las búsquedas, por lo que se buscó asemejar la vista como una ventana de los motores de búsqueda actuales. En la parte superior de la vista te permite introducir la query, en la parte inferior a ello te permite introducir el top k. Después de llenar ambos campos se clickea el botón submit para mandar la información al api. Luego de mandar los datos, se muestran los topk de python por la parte izquierda y por la parte derecha te muestra los topk de postgresSQL con un tiempo de consulta en la parte inferior de cada uno de ellos.
 
-<img src="src/topk.jpg" width="350">
-
-### **REACT y CSS**
-Sirvió como estructura principal de las páginas para darles forma y hacer la ventana principal donde se ingresan la búsquedas como los resultados de la query.
+<img src="imgs/topk.jpg" width="350">
 
 ## To run
 ```sh
@@ -65,8 +62,15 @@ docker-compose up
 
 [arxiv dataset](https://www.kaggle.com/datasets/Cornell-University/arxiv)
 
+<img src="imgs/test1data.jpg" width="350">  <br/>
+<img src="imgs/test1result.jpg" width="350">  
+<img src="imgs/test2data.jpg" width="350">  
+<img src="imgs/test2result.jpg" width="350">  
+<img src="imgs/test3data.jpg" width="350">  
+<img src="imgs/test3result.jpg" width="350">  
+
 
 # **Presentaciòn**
 Link de la presentaciòn:
 
-https://www.canva.com/design/DAFQplvUIWU/t_TEG3gAop4abQyoDIUwYA/edit
+https://docs.google.com/presentation/d/1K-71DAmmlQUzVuxGpff5XGNQ7EgbWbt_WpcBE6wXrms/edit?usp=sharing
