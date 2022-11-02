@@ -61,7 +61,7 @@ class InvertedIndex:
 					#count the tf and df
 					if docPath in data["termfreq"]:
 						data["termfreq"][docPath] += 1
-					else:
+					else:			
 						data["termfreq"][docPath] = 1
 
 					winfo.close()
