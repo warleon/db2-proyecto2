@@ -73,6 +73,7 @@ docker-compose up
 <img src="imgs/test3result.JPG" width="350">  
 
 ## Experimentaciòn
+graficado en decima de segundos
 <img src="imgs/n100.jpg" width="350"> 
 <img src="imgs/grifican100.jpg" width="350"> 
 <img src="imgs/n500.jpg" width="350"> 
