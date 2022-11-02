@@ -9,7 +9,10 @@
 |-|-|
 |Rubio, Ignacio||
 ||Frontend|
+||Data fetching asincrono|
+||Server proxy|
 ||Evaluacion|
+||Informe|
 |Chahua, Luis|
 ||Postgresql|
 ||Similiud coseno|
