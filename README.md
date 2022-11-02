@@ -28,6 +28,8 @@
 La razón del proyecto es crear una clase de motor de búsqueda, el cual muestre sus resultados de documentos en base a la palabra o palabras clave ingresadas.       
 
 Para ello, implementamos en la parte del backend un ìndice invertido, lo cual nos ayudò en la recuperaciòn de textos aplicando el modelo de recuperaciòn por ranking para consultas de texto libre. Por otro lado, en la parte del fronted, se implementò una GUI que te permite escribir tu query y submitear el top k.
+
+La implementacion es general sin embargo lo testeamos solo con un subset del dataset de metadata de Arxiv extrayendo los codigos y resumenes de cada paper en diferentes archivos para poder indexarlos apropiadamente.
 # **Técnicas a usar**
 
 ## **Índice invertido**
