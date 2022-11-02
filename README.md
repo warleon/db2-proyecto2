@@ -17,14 +17,12 @@
   * [Inverted Index](#índice-invertido)
 * [Implementación](#implementación)
     * [Información](#información)
-    * [Inverted Index](#data-recovery)
-    * [Backend](#Backend)
-    * [Frontend](#Frontend)
-      * [REACT y CSS](#html-y-css)
-      * [JavaScript](#javascript)
-* [To run](#pruebas)
-* [Tested with](#pruebas)
-* [Presentaciòn](#pruebas)
+    * [Inverted Index](#invertedindex)
+    * [Backend](#backend)
+    * [Frontend](#frontend)
+* [To run](#to-run)
+* [Tested with](#tested-with)
+* [Presentaciòn](#presentación)
 
 # **Introducción**
 La razón del proyecto es crear una clase de motor de búsqueda, el cual muestre sus resultados de documentos en base a la palabra o palabras clave ingresadas.       
@@ -62,15 +60,15 @@ docker-compose up
 
 [arxiv dataset](https://www.kaggle.com/datasets/Cornell-University/arxiv)
 
-<img src="imgs/test1data.jpg" width="350">  <br/>
-<img src="imgs/test1result.jpg" width="350">  
-<img src="imgs/test2data.jpg" width="350">  
-<img src="imgs/test2result.jpg" width="350">  
-<img src="imgs/test3data.jpg" width="350">  
-<img src="imgs/test3result.jpg" width="350">  
+<img src="imgs/test1data.JPG" width="350">  <br/>
+<img src="imgs/test1result.JPG" width="350">  
+<img src="imgs/test2data.JPG" width="350">  
+<img src="imgs/test2result.JPG" width="350">  
+<img src="imgs/test3data.JPG" width="350">  
+<img src="imgs/test3result.JPG" width="350">  
 
 
-# **Presentaciòn**
+# **Presentación**
 Link de la presentaciòn:
 
 https://docs.google.com/presentation/d/1K-71DAmmlQUzVuxGpff5XGNQ7EgbWbt_WpcBE6wXrms/edit?usp=sharing
