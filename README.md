@@ -79,6 +79,7 @@ docker-compose up
 <img src="imgs/grafican500.jpg" width="350"> 
 <img src="imgs/n1000.jpg" width="350"> 
 <img src="imgs/grafican1000.jpg" width="350"> 
+graficado en decima de segundos
 # **Presentación**
 Link de la presentaciòn:
 
