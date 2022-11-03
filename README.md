@@ -99,10 +99,10 @@ docker-compose up
 <img src="imgs/grafican500.jpg" width="350"> 
 <img src="imgs/n1000.jpg" width="350"> 
 <img src="imgs/grafican1000.jpg" width="350"> 
-graficado en centesima de segundos
-se puede apreciar en las gràficas que el tiempo de postgres es menor que el tiempo de python para los diferentes top k y n probados. Esto se debe a que al abrir un archivo se necesita un tiempo adicional para hacer una llamada al sistema operativo y como son varios archivos que se hicieron debido a la indexaciòn, entonces se hace una sumatoria y aumenta el tiempo. Ademàs, hay un tiempo adicional por el hecho de parsear el json (pues todo està en formato json)
+(graficado en centesima de segundos)
+Se puede apreciar en las gráficas que el tiempo de postgres es menor que el tiempo de python para los diferentes top k y n probados. Esto se debe a que al abrir un archivo se necesita un tiempo adicional para hacer una llamada al sistema operativo y como son varios archivos que se hicieron debido a la indexación, entonces se hace una sumatoria y aumenta el tiempo. Además, hay un tiempo adicional por el hecho de parsear el json (pues todo está en formato json).
 
  **Presentación**
-Link de la presentaciòn:
+Link de la presentación:
 
 https://docs.google.com/presentation/d/1K-71DAmmlQUzVuxGpff5XGNQ7EgbWbt_WpcBE6wXrms/edit?usp=sharing
